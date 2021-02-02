@@ -21,6 +21,7 @@ public class B2606_바이러스 {
     static boolean[] visit;
     static int count;
     
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
