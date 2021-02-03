@@ -9,8 +9,7 @@ public class B2992 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
-		
-		int T = Integer.parseInt(br.readLine());
+		String input = br.readLine();
 	}
 
 }
