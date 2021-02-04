@@ -6,14 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-/**
- * @since
- * @author rbud613
- * @see : https://swexpertacademy.com/main/talk/solvingClub/problemView.do?solveclubId=AXdbYpT6xskDFAUO&contestProbId=AV19AcoKI9sCFAZN&probBoxId=AXdbYpUKxsoDFAUO+&type=PROBLEM&problemBoxTitle=0201&problemBoxCnt=++1+#none
- * @mem
- * @time
- * @caution
- */
+
 
 public class B2606_바이러스 {
 	
@@ -48,14 +41,16 @@ public class B2606_바이러스 {
 		search(1);
 		System.out.println(count);
 	}
+	
+	
 	public static void search(int x) {  
-	        visit[x] = true;
-	        for (int y : a[x]) {
-	            if (visit[y] == false) {
-	            	count++;
-	                search(y);
-	            }
-	        }
-	    }
+        visit[x] = true;
+        for (int y : a[x]) {
+            if (visit[y] == false) {
+            	count++;
+                search(y);
+            }
+        }
+    }
 
 }

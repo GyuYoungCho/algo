@@ -14,24 +14,25 @@ public class B2493 {
 		
 		int N = Integer.parseInt(br.readLine());
 		StringTokenizer st =  new StringTokenizer(br.readLine());
-		int [] top = new int[N];
+		int top = 0;
 		Stack<Integer> stack = new Stack<>();
+		Stack<Integer> index = new Stack<>();
 		
-		for(int i=0;i<N;i++)
-			top[i] = Integer.parseInt(st.nextToken());
-		
-		e:for(int i=N-1;i>0;i--) {
-			for(int j=i-1;j>=0;j--) {
-				if (top[i] < top[j]) {
-					stack.push(j+1);
-					continue e;
+		for(int i=1;i<=N;i++) {
+			top = Integer.parseInt(st.nextToken());
+			
+			while(!stack.isEmpty()) {
+				if(stack.peek() >= top) {
+					sb.append(index.peek()).append(" ");
+					break;
 				}
+				stack.pop();
+				index.pop();
 			}
-			stack.push(0);
-		}
-		stack.push(0);
-		while(!stack.isEmpty()) {
-			sb.append(stack.pop()+" ");
+			if (stack.isEmpty())
+				sb.append(0).append(" ");
+			stack.push(top);
+			index.push(i);
 		}
 		
 		System.out.println(sb);
