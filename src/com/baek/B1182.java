@@ -7,11 +7,10 @@ import java.util.StringTokenizer;
 
 public class B1182 {
 	static int [] input;
-	static int N, sum, Answer;
+	static int N, sum, Answer, count;
 	static boolean[] isSelected;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
 		StringTokenizer st;
 		
 		st = new StringTokenizer(br.readLine());
@@ -27,6 +26,7 @@ public class B1182 {
 		}
 		
 		Answer = 0;
+		count = 0;
 		if(sum==0)
 			Answer--;
 		generateSubset(0);
@@ -35,14 +35,22 @@ public class B1182 {
 	}
 	
 	static void generateSubset(int cnt) {
+		if(count == 1 << (input.length-1))
+			return;
+		
 		if(cnt==N) {
-			int total = 0;
+			int total = 0, total1 = 0;
 			for(int i=0;i<N;i++) {
 				if (isSelected[i])
 					total+=input[i];
+				else
+					total1+=input[i];
 			}
 			if (total==sum)
 				Answer++;
+			if (total1==sum)
+				Answer++;
+			count++;
 			return;
 		}
 		
