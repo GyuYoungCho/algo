@@ -21,7 +21,7 @@ public class B1966 {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
 		StringTokenizer st;
-		int T = Integer.parseInt(br.readLine());	// 테스트 케이스 
+		int T = Integer.parseInt(br.readLine());
 		
 		for(int i=0;i<T;i++) {
 			Queue<Printer> queue = new LinkedList<Printer>();
