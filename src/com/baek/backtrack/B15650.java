@@ -1,4 +1,4 @@
-package com.baek;
+package com.baek.backtrack;
 
 // n과 m 1 포함
 import java.io.BufferedReader;
@@ -6,12 +6,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class B15651 {
+public class B15650 {
 
 	public static StringBuilder sb = new StringBuilder();
 	public static int N, M;
 	public static int[] arr;
-	public static boolean[] visit;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,12 +20,11 @@ public class B15651 {
 		M = Integer.parseInt(st.nextToken());
 
 		arr = new int[M];
-		visit = new boolean[N+1];
-		search(0);
+		search(0,1);
 		System.out.println(sb);
 	}
 
-	public static void search(int end) {
+	public static void search(int end,int start) {
 		if (end == M) {
 			for (int i = 0; i < M; i++) {
 				sb.append(arr[i]).append(' ');
@@ -34,13 +32,9 @@ public class B15651 {
 			sb.append('\n');
 			return;
 		}
-		for (int i = 1; i <= N; i++) {
-			if (!visit[i]) {
-				visit[i] = true;
-				arr[end] = i;
-				search(end + 1);
-				visit[i] = false;
-			}
+		for (int i = start; i <= N; i++) { 
+			arr[end] = i;
+			search(end + 1,i);
 		}
 	}
 

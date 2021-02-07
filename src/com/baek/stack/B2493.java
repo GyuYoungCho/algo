@@ -1,4 +1,4 @@
-package com.baek;
+package com.baek.stack;
 
 import java.io.BufferedReader;
 import java.io.IOException;

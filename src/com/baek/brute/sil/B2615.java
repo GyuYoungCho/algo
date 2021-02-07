@@ -1,4 +1,4 @@
-package com.baek;
+package com.baek.brute.sil;
 
 import java.util.Scanner;
 

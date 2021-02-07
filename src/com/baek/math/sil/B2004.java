@@ -1,4 +1,4 @@
-package com.baek;
+package com.baek.math.sil;
 
 import java.util.Scanner;
 

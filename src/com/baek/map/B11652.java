@@ -1,4 +1,4 @@
-package com.baek;
+package com.baek.map;
 
 import java.io.BufferedReader;
 import java.io.IOException;
