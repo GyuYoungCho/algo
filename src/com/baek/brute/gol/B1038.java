@@ -11,7 +11,7 @@ public class B1038 {
 
 	static int T, cnt = 0;
 	static boolean find = false;
-	static int[] dex, num = {9,8,7,6,5,4,3,2,1,0};
+	static int[] dex, num = {0,1,2,3,4,5,6,7,8,9};
 	static List<Long> list = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -37,14 +37,14 @@ public class B1038 {
 		if (n == d) {
 			long t =0;
 			while(d>0) {
-	            t+=dex[dex.length-d]*Math.pow(10,d-1);
+	            t+=dex[d-1]*Math.pow(10,d-1);
 	            d-=1;
 			}
 			list.add(t);
 	        cnt++;
 			return;
 		}
-		for (int i = num[dex[d-1]]+1; i <11-n+d ; i++) {
+		for (int i = dex[d-1]+1; i <11-n+d ; i++) {
 			dex[d] = num[i];
 			makecom(n,d+1);
 		}
