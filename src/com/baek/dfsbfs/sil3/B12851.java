@@ -26,33 +26,37 @@ public class B12851 {
 		start = new Point(Integer.parseInt(st.nextToken()),1);
 		M = Integer.parseInt(st.nextToken());
 		if(start.x == M) System.out.println(0);
-		else bfs(start);
+		else {
+			bfs(start);
+		}
 	}
 	static void bfs(Point num) {
         Queue<Point> q = new LinkedList<>();
         q.add(num);
-        is[num.x] = true;
         while(!q.isEmpty()) {
         	Point temp = q.poll();
-        	
-        	if(min < temp.cnt) {
-        		System.out.println(min);
-        		System.out.println(c);
-        		return;
+        	is[temp.x] = true;
+        	int twopoint = temp.x*2;
+        	while (twopoint < 100001) {
+        		if(twopoint==M) {
+        			System.out.println(temp.cnt-1);
+        			return;
+        		}
+        		if(!is[twopoint]) {
+        			q.add(new Point(twopoint,temp.cnt));
+        		}else break;
+        		twopoint*=2;
         	}
-        	stat = new int[3];
+        	stat = new int[2];
         	stat[0] = temp.x - 1;
         	stat[1] = temp.x + 1;
-        	stat[2] = temp.x * 2;
-        	for(int i =0; i<3;i++) {
+        	for(int i =0; i<2;i++) {
         		if(stat[i]==M) {
-        			min = temp.cnt;
-        			c++;
-        			continue;
+        			System.out.println(temp.cnt);
+        			return;
         		}
         		if(stat[i]>=0 && stat[i] < 100001 && !is[stat[i]]) {
         			q.add(new Point(stat[i],temp.cnt + 1));
-        			is[stat[i]] = true;
         		}
         	}
         }
