@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 public class B14248 {
 
-	static int T,N,cnt=0;
+	static int T,N,cnt=1;
 	static int[] map;
 	static boolean visited[];
 	public static void main(String[] args) throws IOException {
@@ -30,13 +30,16 @@ public class B14248 {
 	static void jump(int n) {
 		Queue<Integer> q = new LinkedList<>();
 		q.add(n);
+		visited[n] = true;
 		while(!q.isEmpty()) {
 			int now = q.poll();
-			visited[now] = true;
-			cnt++;
 			if(inside(now+map[now])&&!visited[now+map[now]]) {
+				visited[now+map[now]] = true;
+				cnt++;
 				q.add(now+map[now]);
-			}if(inside(now-map[now])&&!visited[now-map[now]]) { 
+			}if(inside(now-map[now])&&!visited[now-map[now]]) {
+				visited[now-map[now]] = true;
+				cnt++;
 				q.add(now-map[now]);
 			}
 		}
