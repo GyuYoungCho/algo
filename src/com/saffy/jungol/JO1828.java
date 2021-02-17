@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class JO1828 {
+	
 	static int N,cnt=0;
 	static int[][] refri;
 	public static void main(String[] args) throws IOException {
