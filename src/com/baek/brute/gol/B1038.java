@@ -11,7 +11,7 @@ public class B1038 {
 
 	static int T, cnt = 0;
 	static boolean find = false;
-	static int[] dex, num = {0,1,2,3,4,5,6,7,8,9};
+	static int[] dex;
 	static List<Long> list = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,10 +22,8 @@ public class B1038 {
 		}
 		e:for (int i = 1; i <= 10; i++) {
 			dex = new int[i];
-			for(int j=0;j<11-i;j++) {
-				dex[0] = num[j];
-				makecom(i, 1);
-			}
+			makecom(i, 0,0);
+			
 			if (cnt>T)
 				break e;
 		}
@@ -33,20 +31,20 @@ public class B1038 {
 		System.out.println(list.get(T-1));
 	}
 
-	static void makecom(int n, int d) {
-		if (n == d) {
+	static void makecom(int n, int c, int d) {
+		if (n == c) {
 			long t =0;
-			while(d>0) {
-	            t+=dex[d-1]*Math.pow(10,d-1);
-	            d-=1;
+			while(c>0) {
+	            t+=dex[c-1]*Math.pow(10,c-1);
+	            c-=1;
 			}
 			list.add(t);
 	        cnt++;
 			return;
 		}
-		for (int i = dex[d-1]+1; i <11-n+d ; i++) {
-			dex[d] = num[i];
-			makecom(n,d+1);
+		for (int i = d; i < 10 ; i++) {
+			dex[c] = i;
+			makecom(n,c+1,i+1);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package com.baek.dfsbfs.gol345;
+package com.baek.brute.gol;
 
 import java.io.BufferedReader;
 import java.io.IOException;
