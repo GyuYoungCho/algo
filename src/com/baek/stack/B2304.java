@@ -7,35 +7,45 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class B2304 {
-
+	static int N, last, max, height[];
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringBuilder sb = new StringBuilder();
 		
-		int N = Integer.parseInt(br.readLine());
-		StringTokenizer st =  new StringTokenizer(br.readLine());
-		int top = 0;
-		Stack<Integer> stack = new Stack<>();
-		Stack<Integer> index = new Stack<>();
-		
-		for(int i=1;i<=N;i++) {
-			top = Integer.parseInt(st.nextToken());
-			
-			while(!stack.isEmpty()) {
-				if(stack.peek() >= top) {
-					sb.append(index.peek()).append(" ");
-					break;
-				}
-				stack.pop();
-				index.pop();
-			}
-			if (stack.isEmpty())
-				sb.append(0).append(" ");
-			stack.push(top);
-			index.push(i);
-		}
-		
-		System.out.println(sb);
+		N = Integer.parseInt(br.readLine());
+		StringTokenizer st;
+
+        height = new int[1001];
+        height[0] = 0;
+        for (int i = 0; i < N; i++) {
+            st = new StringTokenizer(br.readLine());
+            int num = Integer.parseInt(st.nextToken());
+            int h= Integer.parseInt(st.nextToken());
+            
+            height[num] = h;
+            if (last < num) last = num;
+            if (height[max] < h) max = num;
+        }
+
+        Stack<Integer> stack = new Stack<>();
+        stack.push(0);
+
+        int area = height[max];
+        for (int i = 0; i < max; i++) {
+            if (stack.peek() < height[i])
+            	stack.push(height[i]);
+            area += stack.peek();
+        }
+
+        stack.clear();
+        stack.push(0);
+        
+        for (int i = last; i > max; i--) {
+            if (stack.peek() < height[i]) 
+            	stack.push(height[i]);
+            area += stack.peek();
+        }
+
+        System.out.println(area);
 	}
 
 }
