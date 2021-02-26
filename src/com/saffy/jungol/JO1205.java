@@ -30,35 +30,37 @@ public class JO1205 {
 		
 		Arrays.sort(arr);
 		int [] arr1 = new int[N+1];
-		arr1[0] = arr[0] - zero_cnt < 0 ? arr[0] : zero_cnt;
+		arr1[0] = arr[0] - zero_cnt >= 0 ? arr[0] : zero_cnt;
 		for(int i=1;i<N;i++) {
 			arr1[i] = arr[i] - arr[i-1] - 1;
 		}
 		
 		arr1[N] = arr[N-1] + zero_cnt >1000000?1000000:zero_cnt;
-		System.out.println(Arrays.toString(arr1));
-		int stra = 0;
-		int sum = 0;
-		for(int i=zero_cnt;i<N+1;i++) {
-			if(arr1[i]==-1) continue;
-			stra++;
-			if(arr1[i]==0) continue;
-			else if(arr1[i]  <= zero_cnt - sum) {
-				sum+=arr1[i];
-				stra+=arr1[i];
-				
+		
+		
+		for(int i=zero_cnt+1;i<N+1;i++) {
+			int stra = 0;
+			int div = zero_cnt;
+			int j = i;
+			while(div>=0&&j<N+1) {
+				j++;
+				if(arr1[j-1]==-1) continue;
+				stra++;
+				if(arr1[j-1]==0) continue;
+				if(arr1[j-1]  <= div) {
+					stra+=arr1[j-1];
+					div-=arr1[j-1];
+				}else {
+					stra+=div;
+					break;
+				}
 			}
-			else {
-				stra += (sum-zero_cnt);
-				max = max < stra ? stra : max;
-				System.out.println(stra +" " + i);
-				stra = 0;
-				sum=0;
-			}
+//			stra+=div;
+			max = max < stra ? stra : max;
 			
 		}
-		max = max < stra ? stra : max;
-		System.out.println((int)Math.ceil(3.5));
+		
+		System.out.println(max);
 	}
 	
 }
