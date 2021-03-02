@@ -17,18 +17,15 @@ public class B14613 {
 		D = Double.parseDouble(st.nextToken());
 		
 		
-		for (int win = 0; win <= 20; win++)
-		{
-			for (int lose = 0; lose <= 20; lose++)
-			{
-				for (int draw = 0; draw <= 20; draw++)
-				{
-					if (win + lose + draw == 20)
-					{
+		for (int win = 0; win <= 20; win++){
+			for (int lose = 0; lose <= 20; lose++){
+				for (int draw = 0; draw <= 20; draw++){
+					
+					if (win + lose + draw == 20){
 						int score = 2000 + win * 50 - lose * 50;
-						double pro = Math.pow(W, win * 1.0) * Math.pow(L, lose * 1.0)
-							* Math.pow(D, draw * 1.0) * factorial(20)
+						double pro = Math.pow(W, win * 1.0) * Math.pow(L, lose * 1.0) * Math.pow(D, draw * 1.0) * factorial(20)
 							/ factorial(win) / factorial(draw) / factorial(lose);
+						
 						if (score >= 1000 && score <= 1499){
 							arr[0] += pro;
 						}else if (score >= 1500 && score <= 1999){
@@ -53,11 +50,7 @@ public class B14613 {
 	}
 	private static double factorial(int x)
 	{
-		double fac = 1.0;
-		while (x >= 1)
-		{
-			fac *= x--;
-		}
-		return fac;
+		if (x<=1) return 1.0;
+		return x*factorial(x-1);
 	}
 }
