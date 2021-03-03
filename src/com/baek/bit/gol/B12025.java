@@ -3,7 +3,6 @@ package com.baek.bit.gol;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class B12025 {
 	static long K;
@@ -24,6 +23,7 @@ public class B12025 {
 					arr[i] = '2';
 			}
 		}
+		
 		K = Long.parseLong(br.readLine());
 		K--;
 		long maximum = (long) Math.pow(2, cnt);
