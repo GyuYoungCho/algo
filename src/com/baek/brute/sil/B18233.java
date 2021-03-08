@@ -29,8 +29,6 @@ public class B18233 {
 			st = new StringTokenizer(br.readLine());
 			arr[i][0] = Integer.parseInt(st.nextToken());
 			arr[i][1] = Integer.parseInt(st.nextToken());
-//			min = Math.min(min, arr[i][0]);
-//			max = Math.max(max, arr[i][i]);
 		}
 
 		dfs(0,0);

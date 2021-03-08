@@ -20,8 +20,7 @@ public class B1629 {
 	}
 	private static long pow(int k) {
 		if(k == 0) return 1;
-		 
-	    long temp = pow(k/2);
+	    long temp = pow(k>>1);
 	    long result = temp * temp % C;
 	    if(k%2==1) result = result * A % C;
 	    return result;
