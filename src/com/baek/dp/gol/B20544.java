@@ -10,7 +10,7 @@ public class B20544 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		T = Integer.parseInt(br.readLine());
-		//i는 전전꺼 높이, j는 전꺼 k는 현재 높이
+		//i는 위치, j는 전꺼 k는 현재 높이
 		arr= new long[T+1][3][3];
 		exps= new long[T+1][2][2];
 		long all = (solve(T - 1, 0, 0) + solve(T - 1, 1, 0) + solve(T - 1, 2, 0)) % MOD;
@@ -20,8 +20,6 @@ public class B20544 {
 	
 	
 	private static long solve(int n, int h, int next) {
-		if (n < 0)
-			return 0;
 		if (arr[n][h][next] != 0)
 			return arr[n][h][next];
 		
@@ -59,8 +57,7 @@ public class B20544 {
 
 
 	private static long exception(int n, int h, int next) {
-		if (n < 0)
-			return 0;
+		
 		if (exps[n][h][next] != 0)
 			return exps[n][h][next];
 		
