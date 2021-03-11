@@ -7,35 +7,51 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class B1865 {
-	static int N,M, cnt=0;
-	static char a,b;
+	static int T, N, M, W, S,E,D, cnt = 0;
+	static char a, b;
 	static int[] parent;
-	static boolean [] visited;
-	static ArrayList<Integer>[] graph;
+	static boolean[] visited;
+	static ArrayList<int[]>[] graph;
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
-		
-	    N = Integer.parseInt(br.readLine());
-	    graph = new ArrayList[26];
-	    visited = new boolean[26];	    
-	    for (int i = 0; i < 26; i++) {
-	        graph[i] = new ArrayList<Integer>();
-	    }
-	    int root = 0;
-	    for (int i = 0; i < N; i++) {
-	    	st = new StringTokenizer(br.readLine()," is ");
-	        a = st.nextToken().charAt(0);
-	        b = st.nextToken().charAt(0);
-	        graph[a-'a'].add(b-'a');
-	    }
-	    
-	    for (int i = 0; i < M; i++) {
-	    	st = new StringTokenizer(br.readLine()," is ");
-	        a = st.nextToken().charAt(0);
-	        b = st.nextToken().charAt(0);
-	        
-	    }
+
+		T = Integer.parseInt(br.readLine());
+		for (int tc = 1; tc <= T; tc++) {
+			st = new StringTokenizer(br.readLine());
+			N = Integer.parseInt(st.nextToken());
+			M = Integer.parseInt(st.nextToken());
+			W = Integer.parseInt(st.nextToken());
+			graph = new ArrayList[N];
+			for (int i = 0; i < N; i++) {
+				graph[i] = new ArrayList<>();
+			}
+			for(int i=0;i<M;i++) {
+				st = new StringTokenizer(br.readLine());
+				S = Integer.parseInt(st.nextToken());
+                E = Integer.parseInt(st.nextToken());
+                D = Integer.parseInt(st.nextToken());
+                graph[S].add(new int[]{E,D});
+                graph[E].add(new int[]{S,D});
+			}
+			for(int i=0;i<W;i++) {
+				st = new StringTokenizer(br.readLine());
+				S = Integer.parseInt(st.nextToken());
+                E = Integer.parseInt(st.nextToken());
+                D = Integer.parseInt(st.nextToken());
+                graph[S].add(new int[]{E,-D});
+			}
+			int root = 0;
+			
+
+			for (int i = 0; i < M; i++) {
+				st = new StringTokenizer(br.readLine(), " is ");
+				a = st.nextToken().charAt(0);
+				b = st.nextToken().charAt(0);
+
+			}
+		}
 	}
 
 }
