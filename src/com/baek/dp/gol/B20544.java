@@ -11,7 +11,8 @@ public class B20544 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		T = Integer.parseInt(br.readLine());
-		//i는 위치, j는 전꺼 k는 현재 높이
+		//i는 위치, j는 전꺼<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
 		arr= new long[T+1][3][3];
 		for(long first[][]:arr) {
 			for(long second[]:first) {
