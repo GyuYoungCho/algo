@@ -21,7 +21,7 @@ public class B2293 {
         dp[0] = 1;
 
         for(int i = 1 ; i <= n; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
+            
             for (int j = arr[i]; j <= k; j++)
                 dp[j] += dp[j - arr[i]];
         }
