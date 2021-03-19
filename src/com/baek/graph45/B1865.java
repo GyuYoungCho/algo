@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 
 public class B1865 {
 	static int T, N, M, W, S,E,D, cnt = 0;
+	static final int INF = 500 * 10_000;
 	static char a, b;
 	static int[] parent;
 	static boolean[] visited;
