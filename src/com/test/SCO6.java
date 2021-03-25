@@ -10,8 +10,8 @@ class SCO6 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		M = Integer.parseInt(st.nextToken());
 		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 
 		arr = new int[N+1][M+1];
 		dp = new int[N+1][M+1];
@@ -22,10 +22,6 @@ class SCO6 {
 				dp[i][j] = Math.max(dp[i-1][j] ,dp[i][j-1]) + arr[i][j];
 			}
 		}
-		
 		System.out.println(dp[N][M]);
-
 	}
-
-	
 }
