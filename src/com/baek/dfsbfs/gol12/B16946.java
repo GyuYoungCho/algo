@@ -1,0 +1,94 @@
+package com.baek.dfsbfs.gol12;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
+
+public class B16946 {
+	static int N,M;
+	static int[][] arr, dp,  delta = {{1,0},{0,1},{-1,0},{0,-1}};
+	static boolean[][] visit, check;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		arr = new int[N][M];
+		dp = new int[N][M];
+		visit = new boolean[N][M];
+		check = new boolean[N][M];
+		
+		for(int i=0;i<N;i++) {
+			String[] s = br.readLine().split("");
+			for(int j=0;j<M;j++) {
+				arr[i][j] = Integer.parseInt(s[j]);
+			}
+		}
+		
+		for(int i=0;i<N;i++) {
+			for(int j=0;j<M;j++) {
+				if(arr[i][j]==0 && !visit[i][j]) {
+					search(i,j);
+				}else if(arr[i][j]==1) {
+					dp[i][j]+=1;
+				}
+			}
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < N; i++) {
+			for(int j = 0; j < M; j++) {
+				sb.append(dp[i][j]%10);
+			}
+			sb.append("\n");
+		}
+		System.out.println(sb);
+	}
+	
+	private static void search(int x, int y) {
+		Queue<int []> q1 = new LinkedList<>();
+		Queue<int []> q2 = new LinkedList<>();
+		q1.add(new int[] {x,y});
+		
+		visit[x][y] = true;
+		int cnt = 1;
+		
+		while(!q1.isEmpty()) {
+			int[] point = q1.poll();
+			
+			for(int d=0;d<4;d++) {
+				int nx = point[0] + delta[d][0];
+				int ny = point[1] + delta[d][1];
+				
+				if(!inside(nx,ny) || visit[nx][ny]) continue; 
+				
+				if(arr[nx][ny]==1) {
+					if(!check[nx][ny]) {
+						q2.add(new int[] {nx,ny});
+						check[nx][ny] = true;
+					}
+					continue;
+				}
+				
+				cnt++;
+				visit[nx][ny] = true;
+				q1.add(new int[]{nx,ny});
+					
+			}
+		}
+		
+		while(!q2.isEmpty()) {
+			int[] point = q2.poll();
+			dp[point[0]][point[1]] +=cnt;
+			check[point[0]][point[1]] = false;
+		}
+	}
+
+	private static boolean inside(int x, int y) {
+		return x >= 0 && x < N && y >= 0 && y < M;
+	}
+}
