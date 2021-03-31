@@ -19,8 +19,8 @@ public class B16946 {
 		M = Integer.parseInt(st.nextToken());
 		arr = new int[N][M];
 		dp = new int[N][M];
-		visit = new boolean[N][M];
-		check = new boolean[N][M];
+		visit = new boolean[N][M]; // 전체 체크
+		check = new boolean[N][M]; // 벽 체크
 		
 		for(int i=0;i<N;i++) {
 			String[] s = br.readLine().split("");
@@ -50,8 +50,8 @@ public class B16946 {
 	}
 	
 	private static void search(int x, int y) {
-		Queue<int []> q1 = new LinkedList<>();
-		Queue<int []> q2 = new LinkedList<>();
+		Queue<int []> q1 = new LinkedList<>(); // 영역 찾기 큐
+		Queue<int []> q2 = new LinkedList<>(); // 영역에 인접한 벽 찾기 큐
 		q1.add(new int[] {x,y});
 		
 		visit[x][y] = true;
@@ -68,20 +68,20 @@ public class B16946 {
 				
 				if(arr[nx][ny]==1) {
 					if(!check[nx][ny]) {
-						q2.add(new int[] {nx,ny});
+						q2.add(new int[] {nx,ny}); // 주위에 벽 있고 check 아닌 경우 q2에 추가
 						check[nx][ny] = true;
 					}
 					continue;
 				}
 				
-				cnt++;
+				cnt++; // 영역 넓이
 				visit[nx][ny] = true;
-				q1.add(new int[]{nx,ny});
+				q1.add(new int[]{nx,ny}); 
 					
 			}
 		}
 		
-		while(!q2.isEmpty()) {
+		while(!q2.isEmpty()) { // 벽에 영역 넓이를 더해줌
 			int[] point = q2.poll();
 			dp[point[0]][point[1]] +=cnt;
 			check[point[0]][point[1]] = false;
