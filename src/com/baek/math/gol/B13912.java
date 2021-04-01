@@ -10,20 +10,19 @@ public class B13912 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int h = Integer.parseInt(br.readLine());
-		long[] dp = new long[1025];
-		long[][] arr = new long[2049][2049];
-		for(int i=0;i<2049;i++) {
+		long[] dp = new long[11];
+		long[][] arr = new long[2048][2048];
+		
+		arr[0][0] = 1;
+		for(int i=1;i<2048;i++) {
 			arr[i][0] = 1;
-		}
-		arr[1][1] = 1;
-		for(int i=2;i<2049;i++) {
 			for(int j=1;j<=i;j++) {
 				arr[i][j] = (arr[i-1][j] + arr[i-1][j-1])%R;
 			}
 		}
 		dp[0] = 1;
 		for(int i=1;i<=h;i++) {
-			dp[i] = (long)Math.pow(dp[i-1],2) % R;
+			dp[i] = (dp[i-1]*dp[i-1]) % R;
 			dp[i] *= arr[(1<<(i+1))-2][(1<<i)-1];
 			
 			dp[i] %=R;
