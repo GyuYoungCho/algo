@@ -16,6 +16,7 @@ public class B12783 {
 		T = Integer.parseInt(br.readLine());
 		
 		while(T-->0) {
+			
 			st = new StringTokenizer(br.readLine());
 			N = Integer.parseInt(st.nextToken());
 			arr = new int[N];
@@ -33,8 +34,9 @@ public class B12783 {
 				
 				sb.append(min==25?-1:min).append("\n");
 			}
+			
 		}
-		System.out.println(sb);
+		System.out.println(sb.toString());
 	}
 	private static void minCard(int result, int cnt) {
 		if (result < arr[0])
