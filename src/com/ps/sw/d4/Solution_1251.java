@@ -88,7 +88,7 @@ public class Solution_1251 {
 	}
 	
 	public static boolean inside(int x, int y) {
-        return x >= 0 && y >= 0 && x < N && y < M;
+        return x >= 0 && y >= 0 && x < N && y < N;
     }
 	
 }
