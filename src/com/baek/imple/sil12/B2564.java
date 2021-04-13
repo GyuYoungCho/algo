@@ -23,7 +23,6 @@ public class B2564 {
 			else if(d==3) arr[i] = 2*(R+C) - k;
 			else arr[i] = R +k;
 		}
-		
 		for(int i=0;i<N;i++) {
 			dis = Math.abs(arr[i] - arr[N]);
 			sum+=(dis<R+C)?dis: 2*(R+C)-dis;
