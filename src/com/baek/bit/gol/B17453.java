@@ -7,8 +7,8 @@ import java.util.StringTokenizer;
 
 public class B17453 {
 	static int N,M;
-	static char[] door;
-	static char[] oper;
+	static int door[], switches[][];
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
@@ -16,15 +16,23 @@ public class B17453 {
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		
-		door = new char[N];
-		oper = new char[N];
+		door = new int[N];
+		switches = new int[M][N];
+		String str = br.readLine();
 		for (int i = 0; i < N; i++) {
-			
+			if(str.charAt(i)=='1') door[i] = 1;
+			else door[i]=-1;
 		}
-		door = br.readLine().toCharArray();
+		
 		for (int i = 0; i < M; i++) {
-			oper = br.readLine().toCharArray();
+			str = br.readLine();
+			for (int j = 0; j < N; j++) {
+				if(str.charAt(j)=='1') door[i] = 1;
+				else door[i]=-1;
+			}
 		}
+		
+		
 	}
 
 }
