@@ -27,6 +27,7 @@ public class B7576 {
         }
         
         while(!q.isEmpty()) {
+        	
             int[] cur = q.poll();
             ans = cur[2];
             for(int i=0; i<4; i++) {
