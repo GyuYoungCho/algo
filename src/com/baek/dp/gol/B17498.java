@@ -30,8 +30,22 @@ public class B17498 {
 		for (int i = 1; i < N; i++) {
 			Arrays.fill(dp[i], min);
 		}
-		for(int i=0;i<M;i++)
-			dfs(0,i);
+		for(int i=0;i<N;i++) {
+			for (int j = 0; j < M; j++) {
+				for (int x = i+1; x <= i+D; x++) {
+					for (int y = j-D; y <= j+D; y++) {
+						if(x<0||y<0||x>=N||y>=M) continue;
+
+						if(Math.abs(x-i) + Math.abs(y-j) <= D) {
+							dp[x][y] = Math.max(dp[x][y],dp[i][j] + arr[x][y]*arr[i][j]);
+						}
+					}
+				}
+			}
+		}
+		for (int i = 0; i < M; i++) {
+			max = Math.max(max, dp[N-1][i]);
+		}
 		
 		System.out.println(max);
 	}
