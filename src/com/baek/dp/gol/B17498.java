@@ -52,7 +52,6 @@ public class B17498 {
 	private static void dfs(int r, int c) {
 		if(r==N-1) {
 			max = Math.max(min, dp[r][c]);
-			System.out.println("hi");
 			return;
 			
 		}
