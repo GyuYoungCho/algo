@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class Solution1 {
 	static int T,N;
-	static int[][] arr, arr2, arr3, delta = {{1,0},{0,1},{-1,0},{0,-1}};
+	static int[][] arr, map, ji, delta = {{1,0},{0,1},{-1,0},{0,-1}};
 	static int[] team;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,8 +21,8 @@ public class Solution1 {
 			sb.append("#").append(tc).append(" ");
 			N = Integer.parseInt(br.readLine());
 			arr = new int[N][N];
-			arr2 = new int[N][N];
-			arr3 = new int[N][N];
+			map = new int[N][N];
+			ji = new int[N][N];
 			
 			team = new int[4];
 			for (int i = 0; i < N; i++) {
@@ -35,13 +35,13 @@ public class Solution1 {
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine());
 				for (int j = 0; j < N; j++) {
-					arr2[i][j] = Integer.parseInt(st.nextToken());
+					map[i][j] = Integer.parseInt(st.nextToken());
 				}
 			}
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine());
 				for (int j = 0; j < N; j++) {
-					arr3[i][j] = Integer.parseInt(st.nextToken());
+					ji[i][j] = Integer.parseInt(st.nextToken());
 				}
 			}
 			
@@ -59,7 +59,7 @@ public class Solution1 {
 			int ans=0;
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
-					ans+=arr2[i][j];
+					ans+=map[i][j];
 				}
 			}
 			sb.append(ans).append("\n");
@@ -82,17 +82,17 @@ public class Solution1 {
 						if(notin(nx,ny)) continue;
 						
 						if(arr[nx][ny]==t) {
-							sum+=arr2[nx][ny];
-							de.add(new int[] {nx,ny,arr2[nx][ny]/4});
+							sum+=map[nx][ny];
+							de.add(new int[] {nx,ny,map[nx][ny]/4});
 						}
 					}
-					if (arr2[i][j]*5 < sum) {
+					if (map[i][j]*5 < sum) {
 						int all=0;
 						for(int[] cur : de) {
 							count[cur[0]][cur[1]]++;
 							all+=cur[2];
 						}
-						arr2[i][j] = all - arr2[i][j];
+						map[i][j] = all - map[i][j];
 						newteam[i][j] = t;
 						team[t]++;
 						team[arr[i][j]]--;
@@ -103,7 +103,7 @@ public class Solution1 {
 		arr = newteam;
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
-				arr2[i][j] -= arr2[i][j]/4 * count[i][j];
+				map[i][j] -= map[i][j]/4 * count[i][j];
 			}
 		}
 		
@@ -128,12 +128,12 @@ public class Solution1 {
 							int ny = j + delta[d][1];
 							if(notin(nx,ny)) continue;
 							
-							if(arr[nx][ny]==t && 5 * arr2[nx][ny] < arr2[i][j]) {
+							if(arr[nx][ny]==t && 5 * map[nx][ny] < map[i][j]) {
 								ccnt++;
-								count[nx][ny]+=arr2[i][j]/5;
+								count[nx][ny]+=map[i][j]/5;
 							}
 						}
-						count[i][j] -= (arr2[i][j]/5)*ccnt;
+						count[i][j] -= (map[i][j]/5)*ccnt;
 					}else {
 						int ccnt = 0;
 						for (int d = 0; d < 4; d++) {
@@ -142,10 +142,10 @@ public class Solution1 {
 							if(notin(nx,ny)) continue;
 							if (arr[nx][ny]==t) {
 								ccnt++;
-								count[nx][ny]+=arr2[i][j]/5;
+								count[nx][ny]+=map[i][j]/5;
 							}
 						}
-						count[i][j] -= (arr2[i][j]/5)*ccnt;
+						count[i][j] -= (map[i][j]/5)*ccnt;
 					}
 				}
 			}
@@ -153,13 +153,13 @@ public class Solution1 {
 		
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
-				arr2[i][j] += count[i][j];
+				map[i][j] += count[i][j];
 			}
 		}
 	
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
-				arr2[i][j]+=arr3[i][j];
+				map[i][j]+=ji[i][j];
 			}
 		}
 	}
