@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 public class B20366 {
 	static int N;
 	static int arr[];
+	static boolean visit[];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
@@ -18,37 +19,27 @@ public class B20366 {
 		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
-//		Arrays.sort(arr);
-//		
-//		int ans = Integer.MAX_VALUE;
-//		for (int i = 0; i < N - 1; i++){
-//			for (int j = i; j < N; j++){
-//				int snow1 = arr[ i ] + arr[ j ];
-//				int left = i + 1;
-//				int right = j - 1;
-//				
-//				while (left < right){
-//					int snow2 = arr[ left ] + arr[ right ];
-//					if (snow2 < snow1) left++;
-//					
-//					else right--;
-//					
-//					ans = Math.min(ans, Math.abs(snow1 - snow2));
-//				}
-//
-//			}
-//		}
-//		System.out.println(ans);
+		Arrays.sort(arr);
 		
-		for (int i = 0; i < N; i++) {
-			for (int j = 1; j < N; j++) {
-				for (int i = 2; i < N; i++) {
-					for (int i = 3; i < N; i++) {
-						
-					}
+		int ans = Integer.MAX_VALUE;
+		for (int i = 0; i < N - 3; i++){
+			for (int j = i+3; j < N; j++){
+				int elja = arr[i] + arr[j];
+				int left = i + 1;
+				int right = j - 1;
+				
+				while (left < right){
+					int anna = arr[left] + arr[right];
+					
+					if (anna < elja) left++;
+					else right--;
+					
+					ans = Math.min(ans, Math.abs(elja - anna));
 				}
+
 			}
 		}
+		System.out.println(ans);
 	}
 
 }
