@@ -27,11 +27,6 @@ public class B1756 {
 		for (int i = 0; i < M; i++) {
 			int now = Integer.parseInt(st.nextToken());
 			
-//			while(left<right) {
-//				int mid = (left+right)/2;
-//				if(arr[mid]<now) right = mid-1;
-//				else left=mid+1;
-//			}
 			while(right>0 && arr[right]<now) {
 				right--;
 			}
