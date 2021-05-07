@@ -3,6 +3,7 @@ package com.baek.disjoint;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
@@ -17,10 +18,6 @@ public class B17490 {
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
         long K = Long.parseLong(st.nextToken());
-        
-        if(M<2) {
-        	System.out.println("Yes");return;
-        }
  
         parent = new int[N + 1];
         st = new StringTokenizer(br.readLine());
@@ -51,44 +48,45 @@ public class B17490 {
         int cnt=0;
         for (int i = 1; i <= N; i++) {
         	if (!con[i]) {
-                int k =i==N?union(i, 1):union(i, i+1);
+                if(i==N) union(i, 1);
+                else union(i, i+1);
                 cnt++;
             }
+        }
+//        System.out.println(Arrays.toString(parent));
+        if(cnt>=N-1) {
+        	System.out.println("Yes");return;
         }
         
         long total=0;
         while(!pq.isEmpty()) {
-        	if (cnt == N || total >= K) {
-                break;
-            }
+        	if (cnt == N || total >= K) break;
         	
         	int cur[] = pq.poll();
         	
         	if (find(cur[1]) != find(0)) {
                 total += cur[0];
                 cnt++;
-                union(cur[1], 0);
+                union(0,cur[1]);
             }
-        	System.out.println(cur[0]);
+        	
         }
-        
-        System.out.println((cnt == N || total >= K)?"YES":"NO");
+//        System.out.println(Arrays.toString(con));
+//        System.out.println(Arrays.toString(parent));
+        System.out.println((total <= K && cnt == N)?"YES":"NO");
 	}
 	public static int find(int x) {
-        if (x == parent[x]) {
-            return x;
-        }
- 
+        if (x == parent[x]) return x;
         return parent[x] = find(parent[x]);
     }
  
-    public static int union(int x, int y) {
+    public static void union(int x, int y) {
         x = find(x);
         y = find(y);
-        if(x==y) return 0;
+//        if(x==y) return;
         
         if (x>y) parent[x] = y;
         else parent[y] = x;
-        return 0;
+        return;
     }
 }
