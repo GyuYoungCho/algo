@@ -1,10 +1,7 @@
 package com.baek.sort;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class B10814 {
 	static int N;
@@ -24,7 +21,7 @@ public class B10814 {
 		}
 		
 		Arrays.sort(arr,(o1,o2)->{
-			return o1[0].compareTo(o2[0]);
+			return Integer.compare(Integer.parseInt(o1[0]),Integer.parseInt(o2[0]));
 		});
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < N; i++) {
