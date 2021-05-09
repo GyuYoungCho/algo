@@ -13,6 +13,8 @@ public class B3584 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
+		LinkedList<Integer> a = new LinkedList<>();
+		Stack<Integer> s = new Stack<>();
 		
 		int T = Integer.parseInt(br.readLine());
 		while(T-->0) {
