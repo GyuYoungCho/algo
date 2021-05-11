@@ -1,9 +1,6 @@
 package com.programmers.summer;
 
 import java.util.Arrays;
-import java.util.PriorityQueue;
-import java.util.Stack;
-import java.util.StringTokenizer;
 
 public class Test1 {
 
@@ -16,25 +13,31 @@ public class Test1 {
 		System.out.println(solution(map,p,r));
 	}
 	public static int solution(int[][] maps, int p, int r) {
-		int r1 = r/2;
+		int r2 = r/2;
 		int max=0;
 		for(int i=0;i<=maps.length;i++) {
 			for(int j=0;j<=maps.length;j++) {
 				int sum=0;
 				for(int k=0;k<r;k++) {
-					if(k<r/2) {
+					if(k<r2) {
 						for(int l=0;l<2*(k+1);l++) {
-							int nx = i+ (r-k-1);
-							int ny = j+ (-k+l);
+							int nx = i+ (k-r2);
+							int ny = j+ (-k+l-1);
 							if(inside(nx,ny)) continue;
-							if(maps[nx][ny]<p) sum++;
+							if(l==0||l==2*(k+1)-1) {
+								if(maps[nx][ny]<=p/2) sum++;
+							}
+							else if(maps[nx][ny]<=p) sum++;
 						}
 					}else {
 						for(int l=0;l<2*(r-k);l++) {
-							int nx = i+ (r-k-1);
-							int ny = j+ (-k+l);
+							int nx = i+ (k-r2);
+							int ny = j+ (k-r+l);
 							if(inside(nx,ny)) continue;
-							if(maps[nx][ny]<p) sum++;
+							if(l==0||l==2*(r-k)-1) {
+								if(maps[nx][ny]<=p/2) sum++;
+							}
+							else if(maps[nx][ny]<=p) sum++;
 						}
 						
 					}
@@ -43,7 +46,7 @@ public class Test1 {
 			}
 		}
 		
-		return 0;
+		return max;
 	}
 	public static boolean inside(int x, int y) {
 		return x<0||y<0||x>6||y>6;
