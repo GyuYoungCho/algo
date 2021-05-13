@@ -5,6 +5,11 @@ import java.util.Arrays;
 public class Test1 {
 
 	public static void main(String[] args) {
+		StringBuilder sb = new StringBuilder("abcdefg");
+		System.out.println(sb.substring(3, 6));
+		sb.delete(3, 6);
+		System.out.println(sb);
+
 		int p=19;
 		int r=6;
 		int map[][] = {{1, 28, 41, 22, 25, 79, 4},{39, 20, 10, 17, 19, 18, 8},

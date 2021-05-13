@@ -64,4 +64,58 @@ public class test03 {
         }
         return sb.toString();
     }
+	
+//	public String[] solution(String[] s) {
+//        String[] answer = new String[s.length];
+//        
+//        for(int i=0;i<s.length; i++){
+//            StringBuilder sb = new StringBuilder(s[i]);
+//            answer[i] = sb.toString();
+//            if(sb.length()<4) {
+//                continue;
+//            };
+//            if(sb.length()<6) {
+//                for(int j=0;j<=sb.length()-3;j++){
+//                    if(sb.substring(j,j+3).equals("110")){
+//                        sb.delete(j,j+3);
+//                        for(int k=0;k<=sb.length();k++){
+//                            sb.insert(k,"110");
+//                            if(answer[i].compareTo(sb.toString())>0)
+//                                answer[i] = sb.toString();
+//                            sb.delete(k,k+3);
+//                        }
+//                    }
+//                }
+//                
+//                continue;
+//            };
+//            int start=0;
+//            for(int j=0;j<=sb.length()-3;j++){
+//                String sk = sb.substring(j,j+3);
+//                if(sk.equals("110")){
+//                    sb.delete(j,j+3);
+//                    boolean flag = false;
+//                    for(int k=start;k<=sb.length()-3;k++){
+//                        if(sb.substring(k,k+3).equals("111")){
+//                            sb.insert(k,"110");
+//                            start= (k+3);
+//                            j-=2;
+//                            flag = true;
+//                            break;
+//                        }
+//                    }
+//                    if(!flag) {
+//                        sb.insert(sb.length()-3,"110");
+//                        
+//                    }
+//                    
+//                    
+//                }
+//                
+//                if(sk.charAt(2)=='0') j+=3;
+//            }
+//            answer[i] = sb.toString();
+//        }
+//        return answer;
+//    }
 }
