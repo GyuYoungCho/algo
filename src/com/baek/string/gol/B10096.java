@@ -15,11 +15,19 @@ public class B10096 {
 			return;
 		}
 		int[] cnt = new int[26];
-		char[] str = br.readLine().toCharArray();
-		for(char s:str) {
-			cnt[s-'A']++;
+		String str = br.readLine();
+		for(int i=0;i<str.length();i++) {
+			cnt[str.charAt(i)-'A']++;
 		}
-		char ans='0';
+		char sel = '0';
+		for (int i = 0; i < 26; i++) {
+			if(cnt[i]%2==1) sel = (char)(i+65);
+		}
+		for (int i=0;i<str.length();i++) {
+			if(str.charAt(i)==sel ) {
+				
+			}
+		}
 		
 		
 	}
