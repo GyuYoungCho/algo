@@ -7,9 +7,11 @@ public class B2109 {
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringTokenizer st;
 		int N = Integer.parseInt(br.readLine());
-		PriorityQueue<int[]> pq = new PriorityQueue<>();
+		PriorityQueue<int[]> pq = new PriorityQueue<>((o1,o2)->
+			o2[0]-o1[0]
+		);
 		int max = 0;
 		for(int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
