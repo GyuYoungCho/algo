@@ -26,7 +26,7 @@ public class Solution_1492 {
 				for(int j=0;j<3;j++) {
 	                arr[i][j] = Integer.parseInt(st.nextToken());
 	            }
-				pops[i+1] = 1;
+				pops[i] = 1;
 			}
 			
 			int n_popcorn = 0;
@@ -41,6 +41,7 @@ public class Solution_1492 {
 	                pops[j] = corns[j];
 	                pops[j] %= 1000000007;
 	                n_popcorn += pops[j];
+	               
 	                n_popcorn %= 1000000007;
 	                corns[j] = 0;
 	            }
