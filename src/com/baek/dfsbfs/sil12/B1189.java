@@ -17,7 +17,7 @@ public class B1189 {
 	static int ans;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		StringTokenizer st = new StringTokenizer(br.readLine());
 		
 		R = stoi(st.nextToken());
 		C = stoi(st.nextToken());
