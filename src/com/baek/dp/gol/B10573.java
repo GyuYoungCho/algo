@@ -7,7 +7,7 @@ public class B10573 {
 		return Integer.parseInt(s);
 	}
 	static int N;
-	static int[][] arr = new int[81][10];
+	static long[][] arr = new long[81][10];
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = stoi(br.readLine());
@@ -17,12 +17,12 @@ public class B10573 {
 			arr[0][i] = 1;
 		
 		for (int i = 1; i < 81; i++){
-			for (int j = 0; j < 10; j++){
-				for (int k = j; k < 10; k++) 
+			for (int j = 0; j <10; j++){
+				for (int k = j; k < 10 ; k++) 
 					arr[i][j] += arr[i-1][k];
 			}
 		}
-		
+
 		while (N-->0){
 			boolean flag = false;
 			String s = br.readLine();
@@ -34,7 +34,7 @@ public class B10573 {
 			}
 			if (flag) sb.append(-1).append("\n");
 			else {
-				int ans = arr[s.length()][0];
+				long ans = arr[s.length()][0];
 				
 				for (int i = 0; i < s.length(); i++){
 					char k = s.charAt(i);
