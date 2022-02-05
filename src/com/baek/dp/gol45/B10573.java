@@ -1,4 +1,4 @@
-package com.baek.dp.gol;
+package com.baek.dp.gol45;
 
 import java.io.*;
 
