@@ -1,46 +1,42 @@
 package com.baek.bisearch.gol;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class B1477 {
-	static int T,N,M,K;
-	static int[] arr;
+	static int N,M,K;
+	static ArrayList<Integer> arr = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st= new StringTokenizer(br.readLine());
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
-		K = Integer.parseInt(st.nextToken());
-		arr = new int[N+2];
-			
+		N = stoi(st.nextToken());
+		M = stoi(st.nextToken());
+		K = stoi(st.nextToken());
+		
+		arr.add(0);
+		arr.add(K);
 		st = new StringTokenizer(br.readLine());
-		for (int i = 1; i <= N; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
+		for (int i = 0; i < N; i++) {
+			arr.add(stoi(st.nextToken()));
 		}
-		arr[0] = 0;
-		arr[N+1] = K;
 		
-		Arrays.sort(arr);
+		Collections.sort(arr);
 		
-		int left = 0;
-		int right = K;
+		int left = 1, right = K;
 		while(left <= right) {
 			int mid = (left+right)/2;
 			int sum = 0;
 			
 			for (int i = 1; i < N+2; i++) {
-				sum+=(arr[i] - arr[i-1]-1) / mid;
+				sum+= (arr.get(i) - arr.get(i-1)-1) / mid;
 			}
-			if(sum <= M) {
-				right = mid-1;
-			}else {
-				left = mid+1;
-			}
+			
+			if(sum <= M) right = mid-1;
+			else left = mid+1;
 		}
 		System.out.println(left);
+	}
+	public static int stoi(String s) {
+		return Integer.parseInt(s);
 	}
 }
