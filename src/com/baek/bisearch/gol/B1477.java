@@ -30,7 +30,6 @@ public class B1477 {
 			for (int i = 1; i < N+2; i++) {
 				sum+= (arr.get(i) - arr.get(i-1)-1) / mid;
 			}
-			
 			if(sum <= M) right = mid-1;
 			else left = mid+1;
 		}
