@@ -1,4 +1,4 @@
-package com.baek.dfsbfs;
+package com.baek.dfsbfs.gol345;
 
 import java.io.*;
 import java.util.*;
