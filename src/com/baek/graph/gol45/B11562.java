@@ -1,4 +1,4 @@
-package com.baek.graph45;
+package com.baek.graph.gol45;
 
 import java.io.BufferedReader;
 import java.io.IOException;
